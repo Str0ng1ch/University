@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>HTML5</title>
+ </head>
+ <body>
+ </body>
+</html>
+
+<script>
+  var digit = prompt("Задание 1. Введите число:");
+  alert(parseInt(digit));
+
+  var expression = prompt("Задание 2. Введите выражение:");
+  alert(eval(expression));
+
+  var guess = prompt("Задание 3. Задумайте число, умножьте его на 2, а потом прибавьте 7, введите результат:");
+  alert((parseInt(guess) - 7) / 2);
+
+  var name = prompt("Задание 4. Введите ваше имя:");
+  var year = prompt("Введите год вашего рождения");
+  document.write(name, ':', new Date().getFullYear() - parseInt(year));
+</script>
