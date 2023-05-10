@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id=8>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" id=9>
+      <ul class="navbar-nav mr-auto" id=17>
+        <li class="nav-item active" id=10>
+          <a class="nav-link" href="#" id=1>Задача 1 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" id=11>
+          <a class="nav-link" href="#" id=2>Задача 2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" id=12>
+          <a class="nav-link" href="#" id=3>Задача 3 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" id=13>
+          <a class="nav-link" href="#" id=4>Задача 4 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" id=14>
+          <a class="nav-link" href="#" id=5>Задача 5 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" id=15>
+          <a class="nav-link" href="#" id=6>Задача 6 <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</body>
+</html>
+
+<script>
+document.getElementById('1').onclick = function(){
+  let guessed = 0;
+  let textNode1 = document.createTextNode('Загадка 1: Сколько будет 2+2?');
+  document.body.append(textNode1);
+  textNode1.id = 21;
+
+  let input1 = document.createElement('input');
+  document.body.append(input1);
+  input1.id = 22;
+
+  input1.addEventListener('change', function() {
+    let result = input1.value;
+    if (result === '4') {
+      guessed += 1;
+    }
+    textNode1.remove();
+    input1.remove();
+
+    let textNode2 = document.createTextNode('Загадка 1: Сколько будет 3+3?');
+    document.body.append(textNode2);
+
+    let input2 = document.createElement('input');
+    document.body.append(input2);
+
+    input2.addEventListener('change', function() {
+      let result = input2.value;
+      if (result === '6') {
+        guessed += 1;
+      }
+      textNode2.remove();
+      input2.remove();
+
+      let textNode3 = document.createTextNode('Ты отгадал ' + guessed);
+      document.body.append(textNode3);
+      setTimeout(() => {textNode3.remove()}, 2000);
+    });
+  });
+}
+
+document.getElementById('2').onclick = function(){
+  let summa = 0;
+  for (let i = 1; i < 11; i+=1) {
+    summa += i;
+  }
+  let textNode = document.createTextNode('Ответ ' + summa);
+  document.body.append(textNode);
+  setTimeout(() => {textNode.remove();}, 2000);
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+document.getElementById('3').onclick = async function(){
+  let textNode = document.createTextNode('Еще по одной? :)');
+  document.body.append(textNode);
+
+  let input = document.createElement('input');
+  document.body.append(input);
+  let flag = true;
+
+  while (true) {
+    if (input.value == 1) {
+      break;
+    }
+    await delay(100);
+  }
+
+  input.value = '*Чокаются';
+  setTimeout(() => {textNode.remove()}, 3000);
+  setTimeout(() => {input.remove()}, 3000);
+}
+
+document.getElementById('4').onclick = function(){
+  let factorial = 1;
+  for (let i = 1; i < 13; i+=1) {
+    factorial *= i;
+  }
+  let textNode = document.createTextNode('Ответ ' + factorial);
+  document.body.append(textNode);
+  setTimeout(() => {textNode.remove()}, 3000);
+}
+
+document.getElementById('5').onclick = function(){
+  let input = document.createElement('input');
+  document.body.append(input);
+  let flag = true;
+
+  input.addEventListener('change', function() {
+    surname = input.value.toLowerCase();
+    for (let i = 0; i < surname.length / 2; i++) {
+      if (surname[i] !== surname[surname.length - 1 - i]) {
+        flag = false;
+      }
+    }
+    if (flag === true) {
+      input.value = 'Вау';
+    } else {
+      input.value = ':('
+    }
+    setTimeout(() => {input.remove()}, 3000);
+  });
+}
+
+document.getElementById('6').onclick = function(){
+  let flag = true;
+  let num = 12;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      flag = false;
+    }
+  }
+  if (flag === true) {
+    let textNode = document.createTextNode('Число ' + num + ' Простое!');
+    document.body.append(textNode);
+    setTimeout(() => {textNode.remove()}, 3000);
+  }
+  else {
+    let textNode = document.createTextNode('Число ' + num + ' не простое!');
+    document.body.append(textNode);
+    setTimeout(() => {textNode.remove()}, 3000);
+  }
+}
+
+</script>
