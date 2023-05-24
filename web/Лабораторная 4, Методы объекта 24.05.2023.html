@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link href="style.css" type="text/css"  rel="stylesheet">
+    <title>Goods</title>
+  </head>
+
+  <body>
+    <h1> Товары </h1>
+    <h1 class="spoon"> Ложка </h1>
+    <img src="spoon.png">
+    <br>
+    <input type="text" id="input-field">
+    <h2> Краткое описание товара </h2>
+    <p class="short"> Ложка. Просто ложка </p>
+    <h2> Подробное описание товара </h2>
+    <p class="long"> Прекрасное изделие из дерева под названием ложка. Это просто ложка </p>
+
+    <a href="index.html"> На главную </a>
+  </body>
+  <script>
+    let spoon = {
+      parameter1: "Удобная",
+      parameter2: "Большая",
+      parameter3: "Деревянная",
+      parameter4: "Ложка"
+    };
+
+    const inputField = document.querySelector('#input-field');
+    inputField.value = spoon.parameter3;
+
+    const ul = document.createElement('ul');
+    const li1 = document.createElement('li');
+    const li2 = document.createElement('li');
+    const li3 = document.createElement('li');
+
+    function CreateSpoon(texture) {
+      this.parameter1 = "Удобная";
+      this.parameter2 = "Большая";
+      this.parameter3 = texture;
+    }
+
+    function handleInputChange(event) {
+      let diff_spoon = new CreateSpoon(event.target.value);
+      // Назначаем текст для элементов списка
+      li1.textContent = diff_spoon.parameter1;
+      li2.textContent = diff_spoon.parameter2;
+      li3.textContent = diff_spoon.parameter3;
+
+      // Добавляем элементы в список
+      ul.appendChild(li1);
+      ul.appendChild(li2);
+      ul.appendChild(li3);
+
+      // Находим элемент, после которого мы хотим добавить список
+      const referenceElement = document.querySelector('.short');
+
+      // Добавляем список после этого элемента
+      referenceElement.insertAdjacentElement('afterend', ul);
+    }
+
+    inputField.addEventListener('input', handleInputChange);
+  </script>
+</html>

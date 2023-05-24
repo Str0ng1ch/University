@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Goods</title>
+  </head>
+
+  <body>
+    <input type="text" id="input-field">
+    <br>
+    <button id="task1">Задание 1</button>
+    <br>
+    <button id="task2">Задание 2</button>
+    <br>
+    <button id="task4">Задание 3</button>
+    <br>
+    <button id="task5">Задание 4</button>
+    <br>
+    <button id="task6">Задание 5</button>
+    <br>
+  </body>
+
+  <script>
+    let string = "123454321"
+
+    const isPalindrome = str => {
+      for (let i = 0; i < string.length / 2; i++) {
+        if (string[i] !== string[string.length - 1 - i]) {
+          return " не палиндром";
+        }
+      }
+      return " палиндром";
+    }
+
+    const myButton = document.querySelector('#task1');
+    myButton.addEventListener('click', function() {
+      const myInput = document.createElement('input');
+      myInput.setAttribute('type', 'text');
+      myInput.value = "Строка " + string + isPalindrome();
+      myInput.style.width = '200px';
+      myButton.insertAdjacentElement('afterend', myInput);
+    });
+
+  </script>
+
+  <script>
+    const createArrays = () => {
+      let myArray = [1, -2, 3, -4, 5, 6, -7, 8, 9, -10, 11];
+      let myArray2 = [];
+      for (let i = 0; i < myArray.length; i++) {
+        if (myArray[i] < 0) {
+          myArray2[i] = Math.pow(myArray[i], 2);
+        } else {
+          myArray2[i] = myArray[i];
+        }
+      }
+      return [myArray, myArray2];
+    }
+
+    const [myArray, myArray2] = createArrays();
+    const task2 = document.querySelector('#task2');
+    task2.addEventListener('click', function() {
+      let input2 = document.createElement('input');
+      input2.setAttribute('type', 'text');
+      input2.value = "Было: " + myArray;
+      input2.style.width = '200px';
+      task2.insertAdjacentElement('afterend', input2);
+
+      let input2_1 = document.createElement('input');
+      input2_1.setAttribute('type', 'text');
+      input2_1.value = "Стало: " + myArray2;
+      input2_1.style.width = '200px';
+      input2.insertAdjacentElement('afterend', input2_1);
+    });
+
+  </script>
+
+  <script>
+    const inputField = document.querySelector('#input-field');
+    class User {
+      constructor(name) {
+        this.name = name;
+      }
+
+      sayHello() {
+        let input4 = document.createElement('input');
+        input4.setAttribute('type', 'text');
+        input4.value = `Привет, ${this.name}!`
+        input4.style.width = '200px';
+        task4.insertAdjacentElement('afterend', input4);
+      }
+    }
+
+    const task4 = document.querySelector('#task4');
+    task4.addEventListener('click', function() {
+      const myUser = new User(inputField.value);
+      myUser.sayHello();
+    });
+
+  </script>
+
+  <script>
+    class Message {
+      constructor(username) {
+        this.username = username;
+      }
+
+      showMessage() {
+        let input5 = document.createElement('input');
+        input5.setAttribute('type', 'text');
+        input5.value = "Привет, " + this.username;
+        input5.style.width = '200px';
+        task5.insertAdjacentElement('afterend', input5);
+      }
+    }
+
+    const task5 = document.querySelector('#task5');
+    task5.addEventListener('click', function() {
+      new Message("Вася").showMessage();
+    });
+
+  </script>
+
+  <script>
+    class NameFlipper {
+      constructor(name) {
+        this.name = name;
+      }
+
+      flipName() {
+        let input6 = document.createElement('input');
+        input6.setAttribute('type', 'text');
+        input6.value = this.name.split('').reverse().join('');
+        input6.style.width = '200px';
+        task6.insertAdjacentElement('afterend', input6);
+      }
+    }
+
+    const task6 = document.querySelector('#task6');
+    task6.addEventListener('click', function() {
+      new NameFlipper('Артем').flipName();
+    });
+  </script>
+</html>
